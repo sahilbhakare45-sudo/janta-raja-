@@ -1,0 +1,2699 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>जनता राजा मित्र मंडळ</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:#fff7ed;
+  color:#3b2418;
+}
+
+header{
+  background:linear-gradient(135deg,#7f1d1d,#dc2626,#f97316);
+  color:#fff;
+  text-align:center;
+  padding:22px 10px;
+}
+
+.logo{
+  font-size:65px;
+}
+
+header h1{
+  margin:5px 0;
+  font-size:30px;
+}
+
+header p{
+  margin:5px;
+}
+
+nav{
+  background:#fff;
+  padding:10px;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:50;
+  box-shadow:0 2px 12px #0002;
+}
+
+button{
+  border:0;
+  border-radius:9px;
+  padding:11px 16px;
+  margin:4px;
+  background:#dc2626;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+.green{
+  background:#15803d;
+}
+
+.blue{
+  background:#2563eb;
+}
+
+.gray{
+  background:#4b5563;
+}
+
+.orange{
+  background:#ea580c;
+}
+
+.danger{
+  background:#b91c1c;
+}
+
+.container{
+  width:94%;
+  max-width:1100px;
+  margin:22px auto;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.card{
+  background:#fff;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 4px 18px #0001;
+}
+
+.card h2{
+  color:#c2410c;
+  margin-top:0;
+}
+
+.hero{
+  text-align:center;
+  padding:45px 20px;
+}
+
+.hero .big{
+  font-size:100px;
+}
+
+.hero h2{
+  font-size:32px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+input,
+select{
+  width:100%;
+  padding:12px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+}
+
+input:focus,
+select:focus{
+  outline:none;
+  border-color:#dc2626;
+}
+
+.admin-nav{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+  margin-bottom:18px;
+}
+
+.admin-nav button{
+  margin:0;
+}
+
+.admin-section{
+  display:none;
+}
+
+.admin-section.active{
+  display:block;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.stat{
+  background:#fff;
+  padding:16px;
+  text-align:center;
+  border-radius:13px;
+  box-shadow:0 3px 12px #0001;
+}
+
+.stat-icon{
+  font-size:28px;
+}
+
+.stat-number{
+  font-size:24px;
+  font-weight:bold;
+  color:#dc2626;
+  margin:5px;
+}
+
+.msg{
+  display:none;
+  padding:11px;
+  border-radius:8px;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+.msg.show{
+  display:block;
+}
+
+.success{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.error{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.info{
+  background:#e0f2fe;
+  color:#075985;
+}
+
+.qrbox{
+  text-align:center;
+  background:#fff7ed;
+  border:2px dashed #f97316;
+  border-radius:13px;
+  padding:18px;
+}
+
+.qrbox img{
+  width:250px;
+  height:250px;
+  max-width:100%;
+}
+
+.upi{
+  display:inline-block;
+  background:#fff;
+  padding:9px 14px;
+  border-radius:8px;
+  margin:10px;
+  font-weight:bold;
+}
+
+.tablewrap{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  min-width:1000px;
+  border-collapse:collapse;
+}
+
+th{
+  background:#c2410c;
+  color:#fff;
+  padding:10px;
+}
+
+td{
+  padding:9px;
+  border-bottom:1px solid #ddd;
+  text-align:center;
+}
+
+.receipt{
+  max-width:720px;
+  margin:auto;
+  background:#fff;
+  padding:25px;
+  border:5px double #c2410c;
+}
+
+.receipt-head{
+  text-align:center;
+  border-bottom:2px dashed #c2410c;
+  padding-bottom:15px;
+}
+
+.receipt-head .ele{
+  font-size:60px;
+}
+
+.receipt-head h2{
+  color:#c2410c;
+  margin:5px;
+}
+
+.rrow{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 0;
+  border-bottom:1px dotted #999;
+}
+
+.amount{
+  text-align:center;
+  background:#fff3e0;
+  padding:15px;
+  margin:20px 0;
+}
+
+.amount strong{
+  display:block;
+  font-size:32px;
+  color:#dc2626;
+}
+
+.sign{
+  display:flex;
+  justify-content:space-between;
+  text-align:center;
+  margin-top:60px;
+}
+
+.report-box{
+  background:#fff7ed;
+  padding:16px;
+  border-radius:12px;
+  margin-bottom:12px;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+}
+
+.delete-note{
+  background:#fff1f2;
+  color:#9f1239;
+  border:1px solid #fecdd3;
+  padding:12px;
+  border-radius:9px;
+  margin-bottom:15px;
+}
+
+.empty{
+  text-align:center;
+  padding:25px;
+  color:#777;
+}
+
+@media(max-width:700px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .admin-nav{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .hero h2{
+    font-size:26px;
+  }
+
+  .rrow{
+    flex-direction:column;
+    gap:4px;
+  }
+
+  .sign{
+    flex-direction:column;
+    gap:35px;
+  }
+}
+
+@media print{
+
+  header,
+  nav,
+  .no-print,
+  footer{
+    display:none!important;
+  }
+
+  body{
+    background:white;
+  }
+
+  #receiptPage{
+    display:block!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">🐘</div>
+
+  <h1 id="headerName">
+    जनता राजा मित्र मंडळ
+  </h1>
+
+  <p id="headerAddress">
+    गणपती उत्सवासाठी आपले हार्दिक स्वागत आहे.
+  </p>
+
+</header>
+
+<nav>
+
+  <button onclick="showPage('homePage')">
+    🏠 Home
+  </button>
+
+  <button onclick="showPage('donorPage')">
+    🙏 Donor
+  </button>
+
+  <button onclick="showPage('loginPage')">
+    👨‍💼 Admin
+  </button>
+
+</nav>
+
+<div class="container">
+
+<!-- =====================================================
+     HOME
+====================================================== -->
+
+<section id="homePage" class="page active">
+
+  <div class="card hero">
+
+    <div class="big">🐘</div>
+
+    <h2 id="homeName">
+      जनता राजा मित्र मंडळ
+    </h2>
+
+    <p id="homeAddress">
+      गणपती उत्सवासाठी आपले हार्दिक स्वागत आहे.
+    </p>
+
+    <p>
+      🙏 आपल्या सहकार्याबद्दल मनःपूर्वक धन्यवाद 🙏
+    </p>
+
+    <button
+      class="green"
+      onclick="showPage('donorPage')">
+
+      🧾 माझी पावती शोधा
+
+    </button>
+
+  </div>
+
+  <div class="card">
+
+    <h2>🙏 वर्गणीसाठी धन्यवाद</h2>
+
+    <p>
+      आपली वर्गणी गणपती उत्सवाच्या आयोजनासाठी उपयोगी पडेल.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     DONOR
+====================================================== -->
+
+<section id="donorPage" class="page">
+
+  <div class="card">
+
+    <h2>🧾 पावती शोधा</h2>
+
+    <label>
+      Mobile Number
+    </label>
+
+    <input
+      id="searchMobile"
+      maxlength="10"
+      inputmode="numeric"
+      placeholder="10 digit mobile number">
+
+    <button
+      class="blue"
+      onclick="searchReceipt()">
+
+      🔎 पावती शोधा
+
+    </button>
+
+    <div
+      id="donorMsg"
+      class="msg">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     LOGIN
+====================================================== -->
+
+<section id="loginPage" class="page">
+
+  <div
+    class="card"
+    style="max-width:430px;margin:auto">
+
+    <h2>🔐 Admin Login</h2>
+
+    <label>
+      Username
+    </label>
+
+    <input
+      id="adminUsername"
+      type="text"
+      autocomplete="username"
+      placeholder="Username">
+
+    <br><br>
+
+    <label>
+      Password
+    </label>
+
+    <input
+      id="adminPassword"
+      type="password"
+      autocomplete="current-password"
+      placeholder="Password">
+
+    <br>
+
+    <button onclick="adminLogin()">
+      🔑 Login
+    </button>
+
+    <div
+      id="loginMsg"
+      class="msg">
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     ADMIN
+====================================================== -->
+
+<section id="adminPage" class="page">
+
+  <!-- STATS -->
+
+  <div class="stats">
+
+    <div class="stat">
+
+      <div class="stat-icon">🧾</div>
+
+      <div
+        class="stat-number"
+        id="countReceipts">
+        0
+      </div>
+
+      Receipts
+
+    </div>
+
+    <div class="stat">
+
+      <div class="stat-icon">👥</div>
+
+      <div
+        class="stat-number"
+        id="countDonors">
+        0
+      </div>
+
+      Donors
+
+    </div>
+
+    <div class="stat">
+
+      <div class="stat-icon">💰</div>
+
+      <div
+        class="stat-number"
+        id="countAmount">
+        ₹0
+      </div>
+
+      Collection
+
+    </div>
+
+    <div class="stat">
+
+      <div class="stat-icon">📅</div>
+
+      <div
+        class="stat-number"
+        id="todayCount">
+        0
+      </div>
+
+      Today
+
+    </div>
+
+  </div>
+
+
+  <!-- ADMIN NAV -->
+
+  <div class="admin-nav">
+
+    <button onclick="adminSection('settings')">
+      ⚙️ Mandal Settings
+    </button>
+
+    <button onclick="adminSection('qr')">
+      🔳 UPI QR
+    </button>
+
+    <button onclick="adminSection('newReceipt')">
+      🧾 नवीन पावती
+    </button>
+
+    <button onclick="adminSection('receipts')">
+      📋 पावती List
+    </button>
+
+    <button onclick="adminSection('reports')">
+      📊 Reports
+    </button>
+
+  </div>
+
+
+  <!-- =================================================
+       SETTINGS
+  ================================================== -->
+
+  <div
+    id="settings"
+    class="admin-section active">
+
+    <div class="card">
+
+      <h2>⚙️ Mandal Settings</h2>
+
+      <div class="grid">
+
+        <div>
+
+          <label>
+            🏛️ Mandal Name
+          </label>
+
+          <input id="setName">
+
+        </div>
+
+        <div>
+
+          <label>
+            📍 Address
+          </label>
+
+          <input id="setAddress">
+
+        </div>
+
+        <div class="full">
+
+          <label>
+            💳 UPI ID
+          </label>
+
+          <input id="setUPI">
+
+        </div>
+
+      </div>
+
+      <br>
+
+      <button
+        class="green"
+        onclick="saveSettings()">
+
+        💾 Save Settings
+
+      </button>
+
+      <div
+        id="settingsMsg"
+        class="msg">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =================================================
+       QR
+  ================================================== -->
+
+  <div
+    id="qr"
+    class="admin-section">
+
+    <div class="card">
+
+      <h2>🔳 UPI QR Generate</h2>
+
+      <div class="grid">
+
+        <div>
+
+          <label>
+            Amount ₹
+          </label>
+
+          <input
+            id="qrAmount"
+            type="number"
+            placeholder="501">
+
+        </div>
+
+        <div>
+
+          <label>
+            Donor Name
+          </label>
+
+          <input
+            id="qrName"
+            placeholder="Donor Name">
+
+        </div>
+
+      </div>
+
+      <br>
+
+      <button onclick="generateQR()">
+        🔳 Generate QR
+      </button>
+
+      <div
+        id="qrResult"
+        class="qrbox"
+        style="display:none">
+
+        <p>
+          Scan करून UPI Payment करा
+        </p>
+
+        <img
+          id="qrImage"
+          alt="UPI QR">
+
+        <br>
+
+        <div
+          class="upi"
+          id="qrUPI">
+          7028828024@ybl
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =================================================
+       NEW RECEIPT
+  ================================================== -->
+
+  <div
+    id="newReceipt"
+    class="admin-section">
+
+    <div class="card">
+
+      <h2>
+        🧾 नवीन पावती तयार करा
+      </h2>
+
+      <div class="grid">
+
+        <div>
+
+          <label>
+            वर्गणीदाराचे नाव *
+          </label>
+
+          <input
+            id="rNameInput"
+            placeholder="नाव">
+
+        </div>
+
+        <div>
+
+          <label>
+            Mobile Number *
+          </label>
+
+          <input
+            id="rMobileInput"
+            maxlength="10"
+            inputmode="numeric"
+            placeholder="10 digit mobile">
+
+        </div>
+
+        <div>
+
+          <label>
+            वर्गणी Amount ₹ *
+          </label>
+
+          <input
+            id="rAmountInput"
+            type="number"
+            min="1"
+            placeholder="501">
+
+        </div>
+
+        <div>
+
+          <label>
+            Payment Mode
+          </label>
+
+          <select id="rPaymentInput">
+
+            <option>Cash</option>
+            <option>UPI</option>
+            <option>Bank Transfer</option>
+
+          </select>
+
+        </div>
+
+        <div class="full">
+
+          <label>
+            Donor Address
+          </label>
+
+          <input
+            id="rAddressInput"
+            placeholder="पत्ता">
+
+        </div>
+
+      </div>
+
+      <br>
+
+      <button
+        class="green"
+        onclick="createReceipt()">
+
+        🧾 पावती तयार करा
+
+      </button>
+
+      <div
+        id="receiptMsg"
+        class="msg">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =================================================
+       RECEIPTS LIST
+  ================================================== -->
+
+  <div
+    id="receipts"
+    class="admin-section">
+
+    <div class="card">
+
+      <h2>
+        📋 पावती List
+      </h2>
+
+      <div class="delete-note">
+        ⚠️ Delete button वापरल्यास पावती Firebase मधून कायमची delete होईल.
+      </div>
+
+      <input
+        id="listSearch"
+        placeholder="🔎 Name / Mobile / Receipt"
+        oninput="filterTable()">
+
+      <br><br>
+
+      <div class="tablewrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>Receipt</th>
+              <th>Name</th>
+              <th>Mobile</th>
+              <th>Amount</th>
+              <th>Payment</th>
+              <th>Date</th>
+              <th>View</th>
+              <th>Delete</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="receiptTable">
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =================================================
+       REPORTS
+  ================================================== -->
+
+  <div
+    id="reports"
+    class="admin-section">
+
+    <div class="card">
+
+      <h2>
+        📊 Reports
+      </h2>
+
+      <div class="grid">
+
+        <div class="report-box">
+
+          <b>Total Collection</b>
+
+          <h2 id="reportTotal">
+            ₹0
+          </h2>
+
+        </div>
+
+        <div class="report-box">
+
+          <b>Total Receipts</b>
+
+          <h2 id="reportReceipts">
+            0
+          </h2>
+
+        </div>
+
+        <div class="report-box">
+
+          <b>Cash Collection</b>
+
+          <h2 id="reportCash">
+            ₹0
+          </h2>
+
+        </div>
+
+        <div class="report-box">
+
+          <b>UPI Collection</b>
+
+          <h2 id="reportUPI">
+            ₹0
+          </h2>
+
+        </div>
+
+        <div class="report-box">
+
+          <b>Bank Transfer</b>
+
+          <h2 id="reportBank">
+            ₹0
+          </h2>
+
+        </div>
+
+        <div class="report-box">
+
+          <b>Today's Collection</b>
+
+          <h2 id="reportToday">
+            ₹0
+          </h2>
+
+        </div>
+
+      </div>
+
+      <button
+        class="blue"
+        onclick="downloadReport()">
+
+        📥 Download Report
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <br>
+
+  <button
+    class="gray"
+    onclick="logout()">
+
+    🚪 Logout
+
+  </button>
+
+</section>
+
+
+<!-- =====================================================
+     RECEIPT
+====================================================== -->
+
+<section
+  id="receiptPage"
+  class="page">
+
+  <div
+    class="no-print"
+    style="text-align:center;margin-bottom:20px">
+
+    <button
+      class="blue"
+      onclick="window.print()">
+
+      🖨️ Print / Save PDF
+
+    </button>
+
+    <button
+      onclick="showPage('donorPage')">
+
+      🔎 Back
+
+    </button>
+
+  </div>
+
+
+  <div class="receipt">
+
+    <div class="receipt-head">
+
+      <div class="ele">
+        🐘
+      </div>
+
+      <h2 id="printName">
+        जनता राजा मित्र मंडळ
+      </h2>
+
+      <p id="printAddress">
+        पत्ता
+      </p>
+
+      <h3>
+        🧾 वर्गणी पावती
+      </h3>
+
+      <p>
+        ॥ गणपती बाप्पा मोरया ॥
+      </p>
+
+    </div>
+
+
+    <div class="rrow">
+
+      <b>पावती नं.</b>
+
+      <span id="printReceipt">
+        -
+      </span>
+
+    </div>
+
+
+    <div class="rrow">
+
+      <b>दिनांक</b>
+
+      <span id="printDate">
+        -
+      </span>
+
+    </div>
+
+
+    <div class="rrow">
+
+      <b>वर्गणीदार</b>
+
+      <span id="printDonor">
+        -
+      </span>
+
+    </div>
+
+
+    <div class="rrow">
+
+      <b>Mobile</b>
+
+      <span id="printMobile">
+        -
+      </span>
+
+    </div>
+
+
+    <div class="rrow">
+
+      <b>पत्ता</b>
+
+      <span id="printDonorAddress">
+        -
+      </span>
+
+    </div>
+
+
+    <div class="rrow">
+
+      <b>Payment</b>
+
+      <span id="printPayment">
+        -
+      </span>
+
+    </div>
+
+
+    <div class="amount">
+
+      वर्गणी रक्कम
+
+      <strong id="printAmount">
+        ₹0
+      </strong>
+
+    </div>
+
+
+    <p style="text-align:center">
+
+      आपल्या अमूल्य योगदानाबद्दल धन्यवाद! 🙏
+
+    </p>
+
+
+    <div class="sign">
+
+      <div>
+
+        ________________<br>
+
+        वर्गणीदार सही
+
+      </div>
+
+      <div>
+
+        ________________<br>
+
+        मंडळ प्रतिनिधी
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</div>
+
+
+<footer>
+
+  <span id="footerName">
+    जनता राजा मित्र मंडळ
+  </span>
+
+  <br>
+
+  🐘 धन्यवाद 🙏
+
+</footer>
+
+
+<!-- =====================================================
+     FIREBASE
+====================================================== -->
+
+<script type="module">
+
+import {
+  initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+  getDatabase,
+  ref,
+  get,
+  set,
+  push,
+  remove
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+/* =====================================================
+   YOUR EXISTING FIREBASE CONFIG
+====================================================== */
+
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyDJiPV3u-sg2EfrdZ3wExEuW5qDRahr60",
+
+  authDomain:
+  "ganesh-pawti.firebaseapp.com",
+
+  databaseURL:
+  "https://ganesh-pawti-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+  projectId:
+  "ganesh-pawti",
+
+  storageBucket:
+  "ganesh-pawti.firebasestorage.app",
+
+  messagingSenderId:
+  "18470139335",
+
+  appId:
+  "1:18470139335:web:c6f3d8afaf4db7907315e",
+
+  measurementId:
+  "G-3CB9Q9ZP4L"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getDatabase(app);
+
+
+/* =====================================================
+   DEFAULT SETTINGS
+====================================================== */
+
+let settings = {
+
+  name:
+  "जनता राजा मित्र मंडळ",
+
+  address:
+  "गणपती उत्सवासाठी आपले हार्दिक स्वागत आहे.",
+
+  upi:
+  "7028828024@ybl"
+
+};
+
+
+let receipts = [];
+
+let adminLoggedIn = false;
+
+
+/* =====================================================
+   ADMIN LOGIN
+====================================================== */
+
+window.adminLogin = function(){
+
+  const username =
+    document
+    .getElementById("adminUsername")
+    .value
+    .trim();
+
+  const password =
+    document
+    .getElementById("adminPassword")
+    .value;
+
+
+  if(
+    username === "admin" &&
+    password === "12345"
+  ){
+
+    adminLoggedIn = true;
+
+    showPage("adminPage");
+
+    adminSection("settings");
+
+    awaitAdminData();
+
+    document
+    .getElementById("adminUsername")
+    .value = "";
+
+    document
+    .getElementById("adminPassword")
+    .value = "";
+
+  }
+
+  else{
+
+    showMsg(
+      "loginMsg",
+      "❌ Username किंवा Password चुकीचा आहे.",
+      "error"
+    );
+
+  }
+
+};
+
+
+/* =====================================================
+   LOAD ADMIN DATA
+====================================================== */
+
+async function awaitAdminData(){
+
+  await loadSettings();
+
+  await loadReceipts();
+
+}
+
+
+/* =====================================================
+   LOGOUT
+====================================================== */
+
+window.logout = function(){
+
+  adminLoggedIn = false;
+
+  showPage("homePage");
+
+};
+
+
+/* =====================================================
+   CHECK ADMIN
+====================================================== */
+
+function checkAdmin(){
+
+  if(!adminLoggedIn){
+
+    showMsg(
+      "loginMsg",
+      "❌ आधी Admin Login करा.",
+      "error"
+    );
+
+    showPage("loginPage");
+
+    return false;
+
+  }
+
+  return true;
+
+}
+
+
+/* =====================================================
+   SETTINGS LOAD
+====================================================== */
+
+async function loadSettings(){
+
+  try{
+
+    const snapshot =
+      await get(
+        ref(db,"settings")
+      );
+
+
+    if(snapshot.exists()){
+
+      settings = {
+
+        ...settings,
+
+        ...snapshot.val()
+
+      };
+
+    }
+
+
+    applySettings();
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    applySettings();
+
+  }
+
+}
+
+
+/* =====================================================
+   APPLY SETTINGS
+====================================================== */
+
+function applySettings(){
+
+  document
+  .getElementById("headerName")
+  .textContent =
+  settings.name;
+
+
+  document
+  .getElementById("headerAddress")
+  .textContent =
+  settings.address;
+
+
+  document
+  .getElementById("homeName")
+  .textContent =
+  settings.name;
+
+
+  document
+  .getElementById("homeAddress")
+  .textContent =
+  settings.address;
+
+
+  document
+  .getElementById("footerName")
+  .textContent =
+  settings.name;
+
+
+  document
+  .getElementById("setName")
+  .value =
+  settings.name;
+
+
+  document
+  .getElementById("setAddress")
+  .value =
+  settings.address;
+
+
+  document
+  .getElementById("setUPI")
+  .value =
+  settings.upi;
+
+
+  document
+  .getElementById("qrUPI")
+  .textContent =
+  settings.upi;
+
+}
+
+
+/* =====================================================
+   SAVE SETTINGS
+====================================================== */
+
+window.saveSettings = async function(){
+
+  if(!checkAdmin()) return;
+
+
+  const name =
+    document
+    .getElementById("setName")
+    .value
+    .trim();
+
+
+  const address =
+    document
+    .getElementById("setAddress")
+    .value
+    .trim();
+
+
+  const upi =
+    document
+    .getElementById("setUPI")
+    .value
+    .trim();
+
+
+  if(!name || !address || !upi){
+
+    showMsg(
+      "settingsMsg",
+      "❌ सर्व माहिती भरा.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  settings = {
+
+    name,
+    address,
+    upi
+
+  };
+
+
+  try{
+
+    await set(
+      ref(db,"settings"),
+      settings
+    );
+
+
+    applySettings();
+
+
+    showMsg(
+      "settingsMsg",
+      "✅ Settings Firebase मध्ये save झाल्या.",
+      "success"
+    );
+
+  }
+
+  catch(error){
+
+    showMsg(
+      "settingsMsg",
+      "❌ Firebase Error: " +
+      error.message,
+      "error"
+    );
+
+  }
+
+};
+
+
+/* =====================================================
+   QR
+====================================================== */
+
+function makeQR(amount,donor){
+
+  let upiURL =
+    "upi://pay?pa=" +
+    encodeURIComponent(settings.upi) +
+    "&pn=" +
+    encodeURIComponent(settings.name) +
+    "&cu=INR";
+
+
+  if(amount){
+
+    upiURL +=
+      "&am=" +
+      encodeURIComponent(amount);
+
+  }
+
+
+  if(donor){
+
+    upiURL +=
+      "&tn=" +
+      encodeURIComponent(
+        "Ganpati Vargani - " +
+        donor
+      );
+
+  }
+
+
+  return (
+    "https://api.qrserver.com/v1/create-qr-code/" +
+    "?size=300x300&data=" +
+    encodeURIComponent(upiURL)
+  );
+
+}
+
+
+window.generateQR = function(){
+
+  if(!checkAdmin()) return;
+
+
+  const amount =
+    document
+    .getElementById("qrAmount")
+    .value;
+
+
+  const donor =
+    document
+    .getElementById("qrName")
+    .value
+    .trim();
+
+
+  document
+  .getElementById("qrImage")
+  .src =
+  makeQR(amount,donor);
+
+
+  document
+  .getElementById("qrUPI")
+  .textContent =
+  settings.upi;
+
+
+  document
+  .getElementById("qrResult")
+  .style.display =
+  "block";
+
+};
+
+
+/* =====================================================
+   CREATE RECEIPT
+====================================================== */
+
+window.createReceipt = async function(){
+
+  if(!checkAdmin()) return;
+
+
+  const name =
+    document
+    .getElementById("rNameInput")
+    .value
+    .trim();
+
+
+  const mobile =
+    document
+    .getElementById("rMobileInput")
+    .value
+    .trim();
+
+
+  const amount =
+    Number(
+      document
+      .getElementById("rAmountInput")
+      .value
+    );
+
+
+  const payment =
+    document
+    .getElementById("rPaymentInput")
+    .value;
+
+
+  const address =
+    document
+    .getElementById("rAddressInput")
+    .value
+    .trim();
+
+
+  if(!name){
+
+    showMsg(
+      "receiptMsg",
+      "❌ Donor Name टाका.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(!/^[0-9]{10}$/.test(mobile)){
+
+    showMsg(
+      "receiptMsg",
+      "❌ योग्य 10 digit Mobile Number टाका.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(!amount || amount <= 0){
+
+    showMsg(
+      "receiptMsg",
+      "❌ Amount टाका.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  const data = {
+
+    receipt:
+      "JRM-" +
+      Date.now(),
+
+    name:
+      name,
+
+    mobile:
+      mobile,
+
+    amount:
+      amount,
+
+    payment:
+      payment,
+
+    address:
+      address || "-",
+
+    date:
+      new Date()
+      .toLocaleDateString("en-IN"),
+
+    time:
+      Date.now()
+
+  };
+
+
+  try{
+
+    const receiptRef =
+      push(
+        ref(db,"receipts")
+      );
+
+
+    await set(
+      receiptRef,
+      data
+    );
+
+
+    showMsg(
+      "receiptMsg",
+      "✅ पावती Firebase मध्ये save झाली.",
+      "success"
+    );
+
+
+    document
+    .getElementById("rNameInput")
+    .value = "";
+
+
+    document
+    .getElementById("rMobileInput")
+    .value = "";
+
+
+    document
+    .getElementById("rAmountInput")
+    .value = "";
+
+
+    document
+    .getElementById("rAddressInput")
+    .value = "";
+
+
+    await loadReceipts();
+
+
+    showReceipt(data);
+
+  }
+
+  catch(error){
+
+    showMsg(
+      "receiptMsg",
+      "❌ Firebase Error: " +
+      error.message,
+      "error"
+    );
+
+  }
+
+};
+
+
+/* =====================================================
+   LOAD RECEIPTS
+====================================================== */
+
+async function loadReceipts(){
+
+  if(!adminLoggedIn) return;
+
+
+  try{
+
+    const snapshot =
+      await get(
+        ref(db,"receipts")
+      );
+
+
+    receipts = [];
+
+
+    if(snapshot.exists()){
+
+      const data =
+        snapshot.val();
+
+
+      Object
+      .keys(data)
+      .forEach(key=>{
+
+        receipts.push({
+
+          id:key,
+
+          ...data[key]
+
+        });
+
+      });
+
+    }
+
+
+    receipts.sort(
+      (a,b)=>
+        Number(b.time || 0) -
+        Number(a.time || 0)
+    );
+
+
+    renderTable();
+
+    updateReports();
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    showMsg(
+      "receiptMsg",
+      "❌ Records load नहीं हुए: " +
+      error.message,
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   RENDER RECEIPT TABLE
+====================================================== */
+
+function renderTable(){
+
+  const tbody =
+    document
+    .getElementById("receiptTable");
+
+
+  tbody.innerHTML = "";
+
+
+  let total = 0;
+
+  const donors =
+    new Set();
+
+
+  if(receipts.length === 0){
+
+    const tr =
+      document.createElement("tr");
+
+
+    const td =
+      document.createElement("td");
+
+
+    td.colSpan = 8;
+
+    td.className =
+      "empty";
+
+
+    td.textContent =
+      "अजून कोणतीही पावती नाही.";
+
+
+    tr.appendChild(td);
+
+    tbody.appendChild(tr);
+
+  }
+
+
+  receipts.forEach(item=>{
+
+    total +=
+      Number(item.amount || 0);
+
+
+    donors.add(item.mobile);
+
+
+    const tr =
+      document.createElement("tr");
+
+
+    [
+      item.receipt || "-",
+      item.name || "-",
+      item.mobile || "-",
+      "₹" +
+      Number(item.amount || 0)
+      .toLocaleString("en-IN"),
+      item.payment || "-",
+      item.date || "-"
+    ]
+    .forEach(value=>{
+
+      const td =
+        document.createElement("td");
+
+      td.textContent =
+        value;
+
+      tr.appendChild(td);
+
+    });
+
+
+    /* VIEW BUTTON */
+
+    const viewTd =
+      document.createElement("td");
+
+
+    const viewBtn =
+      document.createElement("button");
+
+
+    viewBtn.textContent =
+      "View";
+
+
+    viewBtn.className =
+      "blue";
+
+
+    viewBtn.onclick =
+      ()=>showReceipt(item);
+
+
+    viewTd.appendChild(viewBtn);
+
+    tr.appendChild(viewTd);
+
+
+    /* DELETE BUTTON */
+
+    const deleteTd =
+      document.createElement("td");
+
+
+    const deleteBtn =
+      document.createElement("button");
+
+
+    deleteBtn.textContent =
+      "🗑️ Delete";
+
+
+    deleteBtn.className =
+      "danger";
+
+
+    deleteBtn.onclick =
+      ()=>deleteReceipt(item.id,item);
+
+
+    deleteTd.appendChild(deleteBtn);
+
+    tr.appendChild(deleteTd);
+
+
+    tbody.appendChild(tr);
+
+  });
+
+
+  document
+  .getElementById("countReceipts")
+  .textContent =
+  receipts.length;
+
+
+  document
+  .getElementById("countDonors")
+  .textContent =
+  donors.size;
+
+
+  document
+  .getElementById("countAmount")
+  .textContent =
+  "₹" +
+  total.toLocaleString("en-IN");
+
+
+  const today =
+    todayString();
+
+
+  document
+  .getElementById("todayCount")
+  .textContent =
+  receipts.filter(
+    x=>x.date === today
+  ).length;
+
+}
+
+
+/* =====================================================
+   DELETE RECEIPT
+====================================================== */
+
+window.deleteReceipt = async function(id,item){
+
+  if(!checkAdmin()) return;
+
+
+  const receiptNumber =
+    item.receipt || "ही पावती";
+
+
+  const confirmDelete =
+    confirm(
+      "⚠️ तुम्हाला " +
+      receiptNumber +
+      " ही पावती कायमची delete करायची आहे का?\n\n" +
+      "ही action undo करता येणार नाही."
+    );
+
+
+  if(!confirmDelete) return;
+
+
+  try{
+
+    await remove(
+      ref(db,"receipts/" + id)
+    );
+
+
+    receipts =
+      receipts.filter(
+        r=>r.id !== id
+      );
+
+
+    renderTable();
+
+    updateReports();
+
+
+    showMsg(
+      "receiptMsg",
+      "✅ " +
+      receiptNumber +
+      " delete झाली.",
+      "success"
+    );
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+
+    alert(
+      "❌ Delete करताना Firebase Error:\n" +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =====================================================
+   DONOR SEARCH
+====================================================== */
+
+window.searchReceipt = async function(){
+
+  const mobile =
+    document
+    .getElementById("searchMobile")
+    .value
+    .trim();
+
+
+  if(!/^[0-9]{10}$/.test(mobile)){
+
+    showMsg(
+      "donorMsg",
+      "❌ 10 digit mobile number टाका.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const snapshot =
+      await get(
+        ref(db,"receipts")
+      );
+
+
+    if(!snapshot.exists()){
+
+      showMsg(
+        "donorMsg",
+        "❌ कोणतीही पावती उपलब्ध नाही.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const data =
+      snapshot.val();
+
+
+    let found = [];
+
+
+    Object
+    .keys(data)
+    .forEach(key=>{
+
+      if(
+        String(data[key].mobile) ===
+        mobile
+      ){
+
+        found.push({
+
+          id:key,
+
+          ...data[key]
+
+        });
+
+      }
+
+    });
+
+
+    if(found.length === 0){
+
+      showMsg(
+        "donorMsg",
+        "❌ या mobile number ची पावती सापडली नाही.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    found.sort(
+      (a,b)=>
+        Number(a.time || 0) -
+        Number(b.time || 0)
+    );
+
+
+    showReceipt(
+      found[found.length - 1]
+    );
+
+  }
+
+  catch(error){
+
+    showMsg(
+      "donorMsg",
+      "❌ Firebase Error: " +
+      error.message,
+      "error"
+    );
+
+  }
+
+};
+
+
+/* =====================================================
+   SHOW RECEIPT
+====================================================== */
+
+function showReceipt(data){
+
+  document
+  .getElementById("printName")
+  .textContent =
+  settings.name;
+
+
+  document
+  .getElementById("printAddress")
+  .textContent =
+  settings.address;
+
+
+  document
+  .getElementById("printReceipt")
+  .textContent =
+  data.receipt || "-";
+
+
+  document
+  .getElementById("printDate")
+  .textContent =
+  data.date || "-";
+
+
+  document
+  .getElementById("printDonor")
+  .textContent =
+  data.name || "-";
+
+
+  document
+  .getElementById("printMobile")
+  .textContent =
+  data.mobile || "-";
+
+
+  document
+  .getElementById("printDonorAddress")
+  .textContent =
+  data.address || "-";
+
+
+  document
+  .getElementById("printPayment")
+  .textContent =
+  data.payment || "-";
+
+
+  document
+  .getElementById("printAmount")
+  .textContent =
+  "₹" +
+  Number(data.amount || 0)
+  .toLocaleString("en-IN");
+
+
+  showPage("receiptPage");
+
+}
+
+
+/* =====================================================
+   REPORTS
+====================================================== */
+
+function updateReports(){
+
+  let total = 0;
+
+  let cash = 0;
+
+  let upi = 0;
+
+  let bank = 0;
+
+  let today = 0;
+
+
+  const todayDate =
+    todayString();
+
+
+  receipts.forEach(item=>{
+
+    const amount =
+      Number(item.amount || 0);
+
+
+    total += amount;
+
+
+    if(item.payment === "Cash")
+      cash += amount;
+
+
+    if(item.payment === "UPI")
+      upi += amount;
+
+
+    if(item.payment === "Bank Transfer")
+      bank += amount;
+
+
+    if(item.date === todayDate)
+      today += amount;
+
+  });
+
+
+  document
+  .getElementById("reportTotal")
+  .textContent =
+  "₹" +
+  total.toLocaleString("en-IN");
+
+
+  document
+  .getElementById("reportReceipts")
+  .textContent =
+  receipts.length;
+
+
+  document
+  .getElementById("reportCash")
+  .textContent =
+  "₹" +
+  cash.toLocaleString("en-IN");
+
+
+  document
+  .getElementById("reportUPI")
+  .textContent =
+  "₹" +
+  upi.toLocaleString("en-IN");
+
+
+  document
+  .getElementById("reportBank")
+  .textContent =
+  "₹" +
+  bank.toLocaleString("en-IN");
+
+
+  document
+  .getElementById("reportToday")
+  .textContent =
+  "₹" +
+  today.toLocaleString("en-IN");
+
+}
+
+
+/* =====================================================
+   DOWNLOAD REPORT
+====================================================== */
+
+window.downloadReport = function(){
+
+  if(!checkAdmin()) return;
+
+
+  let csv =
+    "Receipt,Name,Mobile,Amount,Payment,Address,Date\n";
+
+
+  receipts.forEach(item=>{
+
+    csv +=
+      `"${item.receipt || ""}",` +
+      `"${item.name || ""}",` +
+      `"${item.mobile || ""}",` +
+      `"${item.amount || 0}",` +
+      `"${item.payment || ""}",` +
+      `"${item.address || ""}",` +
+      `"${item.date || ""}"\n`;
+
+  });
+
+
+  const blob =
+    new Blob(
+      [csv],
+      {
+        type:
+        "text/csv;charset=utf-8"
+      }
+    );
+
+
+  const url =
+    URL.createObjectURL(blob);
+
+
+  const a =
+    document.createElement("a");
+
+
+  a.href = url;
+
+  a.download =
+    "JantaRajaMandal_Report.csv";
+
+
+  document.body.appendChild(a);
+
+  a.click();
+
+  a.remove();
+
+
+  URL.revokeObjectURL(url);
+
+};
+
+
+/* =====================================================
+   TABLE SEARCH
+====================================================== */
+
+window.filterTable = function(){
+
+  const query =
+    document
+    .getElementById("listSearch")
+    .value
+    .toLowerCase();
+
+
+  document
+  .querySelectorAll("#receiptTable tr")
+  .forEach(row=>{
+
+    row.style.display =
+      row.innerText
+      .toLowerCase()
+      .includes(query)
+      ? ""
+      : "none";
+
+  });
+
+};
+
+
+/* =====================================================
+   TODAY
+====================================================== */
+
+function todayString(){
+
+  return new Date()
+    .toLocaleDateString("en-IN");
+
+}
+
+</script>
+
+
+<!-- =====================================================
+     NORMAL JAVASCRIPT
+====================================================== -->
+
+<script>
+
+/* =====================================================
+   PAGE
+====================================================== */
+
+window.showPage = function(id){
+
+  document
+  .querySelectorAll(".page")
+  .forEach(page=>{
+
+    page.classList.remove("active");
+
+  });
+
+
+  const page =
+    document.getElementById(id);
+
+
+  if(page){
+
+    page.classList.add("active");
+
+  }
+
+
+  window.scrollTo({
+
+    top:0,
+
+    behavior:"smooth"
+
+  });
+
+};
+
+
+/* =====================================================
+   ADMIN SECTION
+====================================================== */
+
+window.adminSection = function(id){
+
+  document
+  .querySelectorAll(".admin-section")
+  .forEach(section=>{
+
+    section.classList.remove("active");
+
+  });
+
+
+  const section =
+    document.getElementById(id);
+
+
+  if(section){
+
+    section.classList.add("active");
+
+  }
+
+};
+
+
+/* =====================================================
+   MESSAGE
+====================================================== */
+
+function showMsg(id,text,type){
+
+  const element =
+    document.getElementById(id);
+
+
+  if(!element) return;
+
+
+  element.textContent =
+    text;
+
+
+  element.className =
+    "msg show " +
+    type;
+
+
+  setTimeout(()=>{
+
+    element.className =
+      "msg";
+
+  },5000);
+
+}
+
+
+window.showMsg =
+  showMsg;
+
+</script>
+
+</body>
+</html>
